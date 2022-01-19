@@ -1,16 +1,26 @@
 <?php
 
-namespace App\Http\Controllers;
+namespace App\Http\Controllers\Admin;
 
+use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 
-class AuthController extends Controller
+class EmployeeController extends Controller
 {
+    public function create(Request $request)
+    {
+        # code...
+        $data['title'] = 'Employee Management';
+        return view('employee.register', compact('data'));
+
+    }
+
     public function showLogin()
     {
-       return view('Auth.login');
+       return view('employee.login');
     }
+
     public function login(Request $request){
        $request->validate([
            'password'=>'required|min:8',
@@ -23,7 +33,7 @@ class AuthController extends Controller
 
     }
      public function forgetPassword(){
-         return view('Auth.forget-password');
+         return view('employee.forget-password');
      }
 
      public function forgetPasswordPost(Request $request){

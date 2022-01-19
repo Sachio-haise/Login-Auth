@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\Admin\EmployeeController;
 use App\Http\Controllers\AuthController;
 use Illuminate\Support\Facades\Route;
 
@@ -17,7 +18,13 @@ use Illuminate\Support\Facades\Route;
 Route::get('/', function () {
     return view('welcome');
 });
-Route::get('/login',[AuthController::class,'showLogin']);
-Route::get('/forget-password',[AuthController::class,'forgetPassword']);
-Route::post('/login',[AuthController::class,'login']);
-Route::post('/forget-password',[AuthController::class,'forgetPasswordPost']);
+
+/* Employee */
+Route::get('employee/create', [EmployeeController::class, 'create']);
+
+Route::get('employee/login',[EmployeeController::class, 'showLogin']);
+Route::get('employee/forget-password',[EmployeeController::class, 'forgetPassword']);
+
+Route::post('employee/login',[EmployeeController::class,'login']);
+
+Route::post('employee/forget-password',[EmployeeController::class,'forgetPasswordPost']);
